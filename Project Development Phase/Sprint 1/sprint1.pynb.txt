@@ -1,0 +1,118 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "6e37311d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "91815d21",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# reading the database\n",
+    "df = pd.read_csv(\"airports.csv\")"
+   ]
+   },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "ce2e4f22",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([nan, 'OC', 'AF', 'AN', 'EU', 'AS', 'SA'], dtype=object)"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.continent.unique()"
+   ]
+   },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "df40f6f3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "           id    ident           type                       name  \\\n",
+      "67307   46378  ZZ-0001       heliport            Sealand Helipad   \n",
+      "67308  307326  ZZ-0002  small_airport  Glorioso Islands Airstrip   \n",
+      "67309  346788  ZZ-0003  small_airport      Fainting Goat Airport   \n",
+      "67310  342102     ZZZW         closed     Scandium City Heliport   \n",
+      "67311  313629     ZZZZ  small_airport     Satsuma Iōjima Airport   \n",
+      "\n",
+      "       latitude_deg  longitude_deg  elevation_ft continent iso_country  \\\n",
+      "67307     51.894444       1.482500          40.0        EU          GB   \n",
+      "67308    -11.584278      47.296389          11.0        AF          TF   \n",
+      "67309     32.110587     -97.356312         690.0       NaN          US   \n",
+      "67310     69.355287    -138.939310           4.0       NaN          CA   \n",
+      "67311     30.784722     130.270556         338.0        AS          JP   \n",
+      "\n",
+       "      iso_region         municipality  scheduled_service gps_code iata_code  \\\n",
+      "67307     GB-ENG              Sealand                  0      NaN       NaN   \n",
+      "67308     TF-U-A     Grande Glorieuse                  0      NaN       NaN   \n",
+      "67309      US-TX                 Blum                  0     87TX       NaN   \n",
+      "67310      CA-YT  (Old) Scandium City                  0     ZZZW       ZYW   \n",
+      "67311      JP-46              Mishima                  0     RJX7       NaN   \n",
+      "\n",
+      "      local_code                   home_link  \\\n",
+      "67307        NaN  http://www.sealandgov.org/   \n",
+      "67308        NaN                         NaN   \n",
+      "67309       87TX                         NaN   \n",
+      "67310       YK96                         NaN   \n",
+      "67311       RJX7                         NaN   \n",
+      "\n",
+      "                                          wikipedia_link              keywords  \n",
+      "67307  https://en.wikipedia.org/wiki/Principality_of_...  Roughs Tower Helipad  \n",
+      "67308                                                NaN                   NaN  \n",
+      "67309                                                NaN                   NaN  \n",
+      "67310                                                NaN                   NaN  \n",
+      "67311  http://wikimapia.org/6705190/Satsuma-Iwo-jima-...  SATSUMA,IWOJIMA,RJX7  \n"
+     ]
+    }
+   ],
+   "source": [
+    "df=df.replace(\"no\",0)\n",
+    "df=df.replace(\"yes\",1)\n",
+    "#df = df.drop(['continent'],axis=1)\n",
+    "print(df.tail())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "6e3831f6",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\rlcsh\\anaconda3\\lib\\site-packages\\seaborn\\_decorators.py:36: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.\n",
+      "  warnings.warn(\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": 
+    
